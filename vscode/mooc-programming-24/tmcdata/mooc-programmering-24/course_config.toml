@@ -1,0 +1,189 @@
+course = "mooc-programmering-24"
+
+[exercises.osa01-01_leende]
+id = 257214
+checksum = "4723505bb19ca0ad25e46c1dbbe4c569"
+
+[exercises.osa01-02_gubben_noak]
+id = 257225
+checksum = "5f29fe50ac6928627425427c78f3df7f"
+
+[exercises.osa01-03_sju_broder]
+id = 257221
+checksum = "58577681de9662e519208d55cc8b79b0"
+
+[exercises.osa01-04_minuter_per_ar]
+id = 257219
+checksum = "e4ee2760c0b3c3e7929611f49812d08a"
+
+[exercises.osa01-05_skriv_ut_kod]
+id = 257220
+checksum = "4d35f9c043d88057180515577178d412"
+
+[exercises.osa01-06_namn_tva_ganger]
+id = 257205
+checksum = "70321da7099a139beabc4940e3d06d8d"
+
+[exercises.osa01-07_namn_utropstecken]
+id = 257202
+checksum = "466739b18da694803c68572bed7bf495"
+
+[exercises.osa01-08_namn_adress]
+id = 257222
+checksum = "b1df964c597bc138405763d26e48bee7"
+
+[exercises.osa01-09_uttryck]
+id = 257212
+checksum = "2665f18c7ca7b23fe7a7a65c07ef228b"
+
+[exercises.osa01-10_berattelse]
+id = 257227
+checksum = "5665cae6409a2c7d66ed85549fcfc342"
+
+[exercises.osa01-10b_mellanslag_eller_inte]
+id = 257223
+checksum = "feab2cc7b04ab0193bd86c7ab28354cb"
+
+[exercises.osa01-11_rakneoperationer]
+id = 257228
+checksum = "599b82f8d2d4c9496be8173de851ed56"
+
+[exercises.osa01-12_utskrifter_pa_samma_rad]
+id = 257218
+checksum = "77b9502967652cb6f65c28ffc3cffacd"
+
+[exercises.osa01-13_x_ganger_fem]
+id = 257208
+checksum = "3e4a84623038e2b0dbfa079f46caf02b"
+
+[exercises.osa01-14_namn_alder]
+id = 257224
+checksum = "17b0a1966d7f3cf9863c97babcb5a77f"
+
+[exercises.osa01-15_dygn_i_sekunder]
+id = 257209
+checksum = "61fbf24db2122039a16c3227d2ac8bd4"
+
+[exercises.osa01-16_summa_produkt]
+id = 257226
+checksum = "229fdd2dbfbe8f00b571d312019051f1"
+
+[exercises.osa01-17_summa_medeltal]
+id = 257213
+checksum = "4024164c96444d7f5e44ecd0f2859cce"
+
+[exercises.osa01-18_gruppindelning]
+id = 257211
+checksum = "53142f00236fff334ddf99e803b866ff"
+
+[exercises.osa01-19_matkostnader]
+id = 257200
+checksum = "57924ab38d33fbd7de4f4723fbbe6333"
+
+[exercises.osa01-20_produkten_av_talen]
+id = 257216
+checksum = "67cbe03bd1da8e901d82b8e92db770d9"
+
+[exercises.osa01-21_orwell]
+id = 257199
+checksum = "9461fbedea86f2068df11ccd667e78c9"
+
+[exercises.osa01-22_absolutbelopp]
+id = 257206
+checksum = "f14513b9f93e8956a507685f8a687b91"
+
+[exercises.osa01-23_soppa]
+id = 257229
+checksum = "222d9425a5a5263b104135cffb087710"
+
+[exercises.osa01-24_storleksklass]
+id = 257215
+checksum = "f76b41c75441ef33318b0e6b68121315"
+
+[exercises.osa01-25_raknare]
+id = 257210
+checksum = "ff4a29d864ce3e0a2fe86f1014505129"
+
+[exercises.osa01-26_temperaturer]
+id = 257201
+checksum = "c7b2c0b52a24faa50d8ad52a32d1312a"
+
+[exercises.osa01-27_lon]
+id = 257217
+checksum = "fa1211b693b54ceb14443cee0d5da9b1"
+
+[exercises.osa01-28_ranta]
+id = 257203
+checksum = "813267725d9f5860401f94e7690083ee"
+
+[exercises.osa01-29_kladsel]
+id = 257207
+checksum = "5c11062af59a736e1b9112e8843feda6"
+
+[exercises.osa01-30_andra_gradens_ekvation]
+id = 257204
+checksum = "a7b118c796d73c4921c919079c3ed842"
+
+[exercises.osa08-01_minsta_medeltalet]
+id = 257237
+checksum = "afb57b69ed37374599a10ae1e1f62a07"
+
+[exercises.osa08-02_radernas_summor]
+id = 257244
+checksum = "1fdc1de71976f0b06ead9131dd9002cb"
+
+[exercises.osa08-03_lista_ar]
+id = 257231
+checksum = "e2cfc2d47c5172fedcb8c323779c1149"
+
+[exercises.osa08-04_affarslista]
+id = 257233
+checksum = "c51f0317dbac4aa1591452e23efcb101"
+
+[exercises.osa08-06_bok]
+id = 257241
+checksum = "84426d6a7c7979caaf8bfb426150334c"
+
+[exercises.osa08-07_skriv_klasser]
+id = 257243
+checksum = "13fe41b06c1a2018c6f08a0e937896cd"
+
+[exercises.osa08-07b_skapa_husdjur]
+id = 257240
+checksum = "0ac96182541e796cc97b47b907522f7e"
+
+[exercises.osa08-08_aldre_bok]
+id = 257245
+checksum = "aff118dd397af17a362c24e037b50e7f"
+
+[exercises.osa08-09_genrens_bocker]
+id = 257230
+checksum = "4faeaf931a90231a15cceb6686b170ef"
+
+[exercises.osa08-10_minskande_raknare]
+id = 257236
+checksum = "adaf881edac7ccb86a4b4efce9fa937b"
+
+[exercises.osa08-10b_for_och_efternamn]
+id = 257242
+checksum = "8f51050baea5e121e1617f7119fae22d"
+
+[exercises.osa08-11_nummerstatistik]
+id = 257239
+checksum = "b23d34f50ecaffc07e17323d4075e88b"
+
+[exercises.osa08-11a_stoppur]
+id = 257235
+checksum = "ed03c6417f98a435345425d4f415519d"
+
+[exercises.osa08-12_klocka]
+id = 257232
+checksum = "389fb79f65c5e7266e5d60183cc21f2b"
+
+[exercises.osa08-13_lunchkort]
+id = 257234
+checksum = "ccb09590b7a867123e84c66f198f8587"
+
+[exercises.osa08-14_serie]
+id = 257238
+checksum = "667ee033f3262d56702bf0fbaec48571"
