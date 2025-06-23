@@ -10,22 +10,24 @@ def get_date():
 
 def calculate_days():
     birthdate = get_date()
-    birth = datetime(birthdate[0], birthdate[1], birthdate[2])
+    birth = datetime(birthdate[2], birthdate[1], birthdate[0])
+    print(birth)
     # Calculate the millenium
     millenium = datetime(1999,12,31)
+    print(millenium)
 
     difference = millenium - birth
+    print(difference)
 
     result = difference.days
 
     if result > 0:
-        print("You were " + str(result) + " days old on the even of the new millennium.")
+        print("You were " + str(result) + " days old on the eve of the new millennium.")
     else:
-        print("You weren't born yet on the even of the new millennium.")
+        print("You weren't born yet on the eve of the new millennium.")
     
     # return difference
 
 if __name__ == "__main__":
     calculate_days()
 
-    
