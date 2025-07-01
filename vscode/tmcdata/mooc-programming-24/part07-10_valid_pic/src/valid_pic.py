@@ -1,33 +1,56 @@
 # Write your solution here
-from datetime import datetime
+from datetime import datetime, date
 
 def is_it_valid(pic: str):
     controller = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     print(pic)
     print(len(pic))
     if len(pic) == 11:
-        date = pic[:6]
-        
+        given_date = pic[:6]
+    
         identifier = pic[7:10]
-        
-        if date.isdigit():
-            print(date) 
-            if (int(date[:2]) > 31) or (int(date[2:4]) > 12):
-                print(f"Day is {date[:2]}, Month is {date[2:4]}")
+        this_date = ''
+        try:
+            century = ''
+            if pic[6] == '+':
+                century = '18'
+            elif pic[6] == '-':
+                century = '19'
+            elif pic[6] == 'A':
+                century = '20'
+            day = given_date[:2]
+            month = given_date[2:4]
+            yy = given_date[4:6]
+            year = century + yy
+            this_date = date.fromisoformat(f"{year}-{month}-{day}")
+            print(f"Date given: {this_date}")
+        except:
+            print("Invalid date")
+            print(f"Date given: {this_date}")
+            return False
+         
+        if given_date.isdigit():
+            print(given_date) 
+            if (int(given_date[:2]) > 31) or (int(given_date[2:4]) > 12):
+                print(f"Day is {given_date[:2]}, Month is {given_date[2:4]}")
                 return False
             else:
                 if identifier.isdigit():
-                    print(identifier)
+                    print(f"Identifier: {identifier}")
                     if pic[6] == '+' or pic[6] == '-' or pic [6] == 'A':
-                        number = date + identifier
+                        number = given_date + identifier
                         print(f"Number: {number}")
                         remainder = int(int(number) % 31)
                         print(f"Remainder: {remainder}")
-                        if pic[10] == controller[remainder]:
-                            print(f"pic[10]: {pic[10]}, Controller: {controller[remainder]}")
+                        letter_index = controller.find(pic[10])
+                        if remainder == letter_index:
+                            # print(f"pic[10]: {pic[10]}, Controller: {letter}")
+                            print(f"Remainder: {remainder}, Letter index: {letter_index}, Controller: {pic[10]}")
+                            print(controller)
                             return True
                         else:
-                            print(f"pic[10]: {pic[10]}, Controller: {controller[remainder]}")
+                            print(f"Remainder: {remainder}, Letter index: {letter_index}, Controller: {pic[10]}")
+                            print(controller)
                             return False
                     else:
                         return False
@@ -44,4 +67,5 @@ if __name__ == "__main__":
     print(is_it_valid("230827-906F"))
     print(is_it_valid("120488+246L"))
     print(is_it_valid("310823A9877"))
+    print(is_it_valid("290103A605T"))
                     
