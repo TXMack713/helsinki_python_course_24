@@ -1,10 +1,12 @@
 # Write your solution here
+#!/usr/bin/env python3
 from datetime import datetime, date
 
 def is_it_valid(pic: str):
-    controller = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    controller = "0123456789ABCDEFHJKLMNPRSTUVWXYZ"
+    print("\n")
     print(pic)
-    print(len(pic))
+    # print(len(pic))
     if len(pic) == 11:
         given_date = pic[:6]
     
@@ -30,20 +32,20 @@ def is_it_valid(pic: str):
             return False
          
         if given_date.isdigit():
-            print(given_date) 
+            # print(given_date) 
             if (int(given_date[:2]) > 31) or (int(given_date[2:4]) > 12):
                 print(f"Day is {given_date[:2]}, Month is {given_date[2:4]}")
                 return False
             else:
                 if identifier.isdigit():
-                    print(f"Identifier: {identifier}")
+                    # print(f"Identifier: {identifier}")
                     if pic[6] == '+' or pic[6] == '-' or pic [6] == 'A':
                         number = given_date + identifier
                         print(f"Number: {number}")
                         remainder = int(int(number) % 31)
-                        print(f"Remainder: {remainder}")
+                        # print(f"Remainder: {remainder}")
                         letter_index = controller.find(pic[10])
-                        if remainder == letter_index:
+                        if controller[remainder] == pic[10]:
                             # print(f"pic[10]: {pic[10]}, Controller: {letter}")
                             print(f"Remainder: {remainder}, Letter index: {letter_index}, Controller: {pic[10]}")
                             print(controller)
