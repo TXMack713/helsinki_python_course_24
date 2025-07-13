@@ -1,1 +1,1 @@
-# Write your solution here
+#!/usr/bin/env python3
