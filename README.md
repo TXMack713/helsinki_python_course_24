@@ -1,1 +1,0 @@
-# helsinki_python_course_24
