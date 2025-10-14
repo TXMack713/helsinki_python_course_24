@@ -48,18 +48,18 @@ def final_points():
             if (int(submit_time[0]) - int(start[0])) > 3:
                 # points[exam[0]] = 0
                 continue
-            elif (int(submit_time[0]) - int(start[0])) < 3:
+            elif ((int(submit_time[0]) - int(start[0])) == 3) and ((int(submit_time[1]) - int(start[1])) > 0):
+                continue
+            else:
                 if exam[0] not in points:
                     points[exam[0]] = int(exam[1])
                 else:
-                    if int(exam[1]) >= int(points.get(exam[0])):
-                        points[exam[0]] = int(exam[1])        
-            else:
-                if (int(submit_time[1]) - int(start[1])) > 0:
-                    # points[exam[0]] = 0            
-                    continue
+                    if int(exam[1]) > int(points.get(exam[0])):
+                        points[exam[0]] = int(exam[1])  
         point_total = 0
+        print(f"Submitter: {submitter}")
         for task, points in points.items():
+            print(f"Task: {task}, points: {points}")
             point_total += points
         assignments[str(submitter)] = point_total
 
