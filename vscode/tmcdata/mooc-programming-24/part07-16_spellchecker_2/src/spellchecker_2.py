@@ -16,9 +16,9 @@ def spell_checker():
     bad_words_list = []
     for word in words:
         if word.lower() not in dictionary_list:
+            bad_words_list.append(word)
             word = "*" + word + "*"
             new_words_list.append(word)
-            bad_words_list.append(word)
             # print("Bad word", word)
         else:
             new_words_list.append(word)
@@ -33,12 +33,12 @@ def spell_checker():
 
     for word in bad_words_list:
         substitute_words = []
-        substitute_words = difflib.get_close_matches(word, dictionary_list, n=5, cutoff=0)
+        substitute_words = difflib.get_close_matches(word, dictionary_list)
         subs_output = ""
         for entry in substitute_words:
             subs_output = subs_output + entry + ", "
         # print(substitute_words)
-        print(subs_output[:-2].strip())
+        print(f"{word}: {subs_output[:-2].strip()}")
  
 
 spell_checker()
