@@ -1,4 +1,5 @@
-# Tee ratkaisusi tähän:
+#!/usr/bin/env python 3
+
 class DecreasingCounter:
     def __init__(self, initial_value: int):
         self.value = initial_value
