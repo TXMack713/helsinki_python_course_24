@@ -11,7 +11,7 @@ class Stopwatch:
         return f"{self.minutes:02}:{self.seconds:02}"
     
     def tick(self):
-        time.sleep(1)
+        # time.sleep(1)
         if self.seconds == 59:
             self.seconds = 0
             if self.minutes == 59:
