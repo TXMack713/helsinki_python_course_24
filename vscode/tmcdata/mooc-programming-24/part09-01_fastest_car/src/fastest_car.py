@@ -1,4 +1,4 @@
-# Write your solution after the class Car
+#!/usr/bin/env python 3
 # Do not make changes to the class!
 class Car:
     def __init__(self, make: str, top_speed: int):
@@ -15,7 +15,6 @@ def fastest_car(cars: list):
         if car.top_speed > fastest:
             fastest = car.top_speed
             model = car.make
-            # print(f"{car.make}: {car.top_speed}")
         else:
             continue
     
