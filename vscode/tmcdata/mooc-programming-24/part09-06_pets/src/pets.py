@@ -1,4 +1,4 @@
-# WRITE YOUR SOLUTION HERE:
+#!/usr/bin/env python 3
 
 class Pet:
     def __init__(self, name: str, description: str):
@@ -14,4 +14,10 @@ class Person:
         self.pet = pet
 
     def __str__(self):
-        return self.name
+        return f"{self.name}, whose pal is {self.pet.name}, a {self.pet.description}"
+
+if __name__ == "__main__":
+    hulda = Pet("Hulda", "mixed-breed dog")
+    levi = Person("Levi", hulda)
+
+    print(levi)
