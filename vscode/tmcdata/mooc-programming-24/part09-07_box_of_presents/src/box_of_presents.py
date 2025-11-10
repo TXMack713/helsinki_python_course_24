@@ -17,7 +17,9 @@ class Box:
         self.presents.append(present)
 
     def total_weight(self):
+        self.weight = 0
         for item in self.presents:
+            # print(f"{item.name}: {item.weight}")
             self.weight += item.weight
 
         return self.weight
