@@ -1,4 +1,5 @@
-# Write your solution here!
+#!/usr/bin/env python 3
+
 class Rectangle:
     def __init__(self, width: int, height: int):
         self.width = width
@@ -9,3 +10,20 @@ class Rectangle:
 
     def area(self):
         return self.width * self.height
+
+class Square(Rectangle):
+    def __init__(self, width):
+        super().__init__(width, height=width)
+        # self.height = self.width
+    
+    def __str__(self):
+        return f"square {self.width}x{self.height}"
+    
+if __name__ == "__main__":
+    rectangle = Rectangle(2, 3)
+    print(rectangle)
+    print("area:", rectangle.area())
+
+    square = Square(4)
+    print(square)
+    print("area:", square.area())
