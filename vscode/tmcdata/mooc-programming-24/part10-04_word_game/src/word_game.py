@@ -35,7 +35,7 @@ class LongestWord(WordGame):
     def __init__(self, rounds):
         super().__init__(rounds)
     
-    def round_winner(self, player1_word, player2_word):
+    def round_winner(self, player1_word: str, player2_word: str):
         if len(player1_word) > len(player2_word):
             return 1
         elif len(player2_word) > len(player1_word):
@@ -50,31 +50,34 @@ class MostVowels(WordGame):
     def __init__(self, rounds):
         super().__init__(rounds)
 
-    def round_winner(self, player1_word, player2_word):
-        player1_vowels = 0
-        player2_vowels = 0
+    def round_winner(self, player1_word: str, player2_word: str):
         vowels = 'aeiou'
         player1_count = 0
         player2_count = 0
-        if type(player1_word) == "str" and type(player2_word) == "str":
+        if type(player1_word) == str and type(player2_word) == str:
+            print(player1_word)
             for letter in player1_word:
+                print("Player 1")
                 if letter in vowels:
+                    print(letter)
                     player1_count += 1
             for letter in player2_word:
+                print("Player 2")
                 if letter in vowels:
+                    print(letter)
                     player2_count += 1
-            if len(player1_count) > len(player2_count):
+            if player1_count > player2_count:
                 return 1
-            elif len(player1_count) < len(player2_count):
+            elif player1_count < player2_count:
                 return 2
             else:
                 pass
         else:
-            if type(player1_word) == "str" and type(player2_word) != "str":
+            if type(player1_word) == str and type(player2_word) != str:
                 return 1
-            elif type(player1_word) != "str" and type(player2_word) == "str":
+            elif type(player1_word) != str and type(player2_word) == str:
                 return 2
-            elif type(player1_word) != "str" and type(player2_word) != "str":
+            elif type(player1_word) != str and type(player2_word) != str:
                 pass
         
     # def play(self):
@@ -113,5 +116,7 @@ class RockPaperScissors(WordGame):
 if __name__ == "__main__":
     # p = LongestWord(3)
     # p.play()
-    p = RockPaperScissors(4)
+    # p = RockPaperScissors(4)
+    # p.play()
+    p = MostVowels(3)
     p.play()
