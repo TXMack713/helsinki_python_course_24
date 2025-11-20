@@ -1,4 +1,4 @@
-# Write your solution here
+#!/usr/bin/env python 3
 import random
 
 class WordGame():
