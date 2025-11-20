@@ -31,3 +31,87 @@ class WordGame():
         print(f"player 1: {self.wins1}")
         print(f"player 2: {self.wins2}")
 
+class LongestWord(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+    
+    def round_winner(self, player1_word, player2_word):
+        if len(player1_word) > len(player2_word):
+            return 1
+        elif len(player2_word) > len(player1_word):
+            return 2
+        else:
+            pass
+
+    # def play(self):
+    #     return super().play()
+    
+class MostVowels(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+
+    def round_winner(self, player1_word, player2_word):
+        player1_vowels = 0
+        player2_vowels = 0
+        vowels = 'aeiou'
+        player1_count = 0
+        player2_count = 0
+        if type(player1_word) == "str" and type(player2_word) == "str":
+            for letter in player1_word:
+                if letter in vowels:
+                    player1_count += 1
+            for letter in player2_word:
+                if letter in vowels:
+                    player2_count += 1
+            if len(player1_count) > len(player2_count):
+                return 1
+            elif len(player1_count) < len(player2_count):
+                return 2
+            else:
+                pass
+        else:
+            if type(player1_word) == "str" and type(player2_word) != "str":
+                return 1
+            elif type(player1_word) != "str" and type(player2_word) == "str":
+                return 2
+            elif type(player1_word) != "str" and type(player2_word) != "str":
+                pass
+        
+    # def play(self):
+    #     return super().play()
+
+class RockPaperScissors(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+    
+    def round_winner(self, player1_word, player2_word):
+        rps = "rockpaperscissors"
+
+        if player1_word == "rock" and player2_word == "rock":
+            pass
+        elif player1_word == "rock" and player2_word == "scissors":
+            return 1
+        elif player1_word == "rock" and player2_word == "paper":
+            return 2
+        elif player1_word == "paper" and player2_word == "paper":
+            pass
+        elif player1_word == "paper" and player2_word == "rock":
+            return 1
+        elif player1_word == "paper" and player2_word == "scissors":
+            return 2
+        elif player1_word == "scissors" and player2_word == "scissors":
+            pass
+        elif player1_word == "scissors" and player2_word == "paper":
+            return 1
+        elif player1_word == "scissors" and player2_word == "rock":
+            return 2
+        elif player1_word in rps and player2_word not in rps:
+            return 1
+        elif player2_word in rps and player1_word not in rps:
+            return 2
+
+if __name__ == "__main__":
+    # p = LongestWord(3)
+    # p.play()
+    p = RockPaperScissors(4)
+    p.play()
