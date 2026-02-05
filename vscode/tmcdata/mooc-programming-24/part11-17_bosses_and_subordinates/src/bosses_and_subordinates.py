@@ -1,4 +1,5 @@
-# WRITE YOUR SOLUTION HERE:
+#!/usr/bin/env python 3
+
 class Employee:
     def __init__(self, name: str):
         self.name = name
@@ -6,3 +7,28 @@ class Employee:
 
     def add_subordinate(self, employee: 'Employee'):
         self.subordinates.append(employee)
+
+def count_subordinates(employee: Employee):
+    sum = len(employee.subordinates)
+    if len(employee.subordinates) == 0:
+        return 0
+    else:
+        for sub in employee.subordinates:
+            sum += count_subordinates(sub)
+    return sum
+
+if __name__ == "__main__":
+    t1 = Employee("Sally")
+    t2 = Employee("Eric")
+    t3 = Employee("Matthew")
+    t4 = Employee("Emily")
+    t5 = Employee("Adele")
+    t6 = Employee("Claire")
+    t1.add_subordinate(t4)
+    t1.add_subordinate(t6)
+    t4.add_subordinate(t2)
+    t4.add_subordinate(t3)
+    t4.add_subordinate(t5)
+    print(count_subordinates(t1))
+    print(count_subordinates(t4))
+    print(count_subordinates(t5))
