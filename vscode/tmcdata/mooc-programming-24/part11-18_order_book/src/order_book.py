@@ -45,14 +45,12 @@ class OrderBook:
         return self.orders
     
     def mark_finished(self, id: int):
-        found = False
+        found = ""
         for task in self.orders:
-            print(f"Task: {task}")
-            print(f"Task ID: {task.id}")
             if task.id == id:
-                found == True
+                found = True
                 task.mark_finished()
-        if found == False:
+        if found != True:
             raise ValueError(f"Task id not found: {id}")
     
     def finished_orders(self):
@@ -71,28 +69,45 @@ class OrderBook:
     
     def programmers(self):
         return list(set(self.all_programmers))
+    
+    def status_of_programmer(self, programmer: str):
+        all_programmers = self.programmers()
+        complete = 0
+        uncomplete = 0
+        hours_complete = 0
+        hours_uncomplete = 0
+        for task in self.orders:
+            if task.complete == True and task.programmer == programmer:
+                complete += 1
+                hours_complete += task.workload
+            if task.complete == False and task.programmer == programmer:
+                uncomplete += 1
+                hours_uncomplete += task.workload
+        if programmer not in self.programmers():
+            raise ValueError("Programmer not found")
+        
+        return (complete, uncomplete, hours_complete, hours_uncomplete)
 
 if __name__ == "__main__":
-    # t1 = Task("program hello world", "Eric", 3)
-    # print(t1.id, t1.description, t1.programmer, t1.workload)
-    # print(t1)
-    # print(t1.is_finished())
-    # t1.mark_finished()
-    # print(t1)
-    # print(t1.is_finished())
-    # t2 = Task("program webstore", "Adele", 10)
-    # t3 = Task("program mobile app for workload accounting", "Eric", 25)
-    # print(t2)
-    # print(t3)
-
+    t1 = Task("program hello world", "Eric", 3)
+    print(t1.id, t1.description, t1.programmer, t1.workload)
+    print(t1)
+    print(t1.is_finished())
+    t1.mark_finished()
+    print(t1)
+    print(t1.is_finished())
+    t2 = Task("program webstore", "Adele", 10)
+    t3 = Task("program mobile app for workload accounting", "Eric", 25)
+    print(t2)
+    print(t3)
 
     orders = OrderBook()
     orders.add_order("program webstore", "Adele", 10)
     orders.add_order("program mobile app for workload accounting", "Eric", 25)
     orders.add_order("program app for practising mathematics", "Adele", 100)
 
-    orders.mark_finished(1)
-    orders.mark_finished(2)
+    orders.mark_finished(4)
+    orders.mark_finished(5)
 
     for order in orders.all_orders():
         print(order)
@@ -101,3 +116,6 @@ if __name__ == "__main__":
 
     for programmer in orders.programmers():
         print(programmer)
+    
+    status = orders.status_of_programmer("Adele")
+    print(status)
