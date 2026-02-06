@@ -107,11 +107,17 @@ class OrderBookApplication:
     def add_order(self):
         description = input("description: ")
         programmer_workload = input("programmer and workload estimate: ")
-        programmer_workload_list = programmer_workload.split(" ")
-        programmer = programmer_workload_list[0]
-        workload = int(programmer_workload_list[1])
-        self.__orders.add_order(description, programmer, workload)
-        print("added!")
+        try:
+            programmer_workload_list = programmer_workload.split(" ")
+            programmer = programmer_workload_list[0]
+            workload = int(programmer_workload_list[1])    
+            self.__orders.add_order(description, programmer, workload)
+            print("added!")
+        except ValueError:
+            self.erroneous_input()
+        except IndexError:
+            self.erroneous_input()
+            
     
     def list_finished_tasks(self):
         completed_orders = self.__orders.finished_orders()
@@ -129,25 +135,30 @@ class OrderBookApplication:
                 print(task)
     
     def mark_finished(self):
-        id = input("id: ")
-        marked = self.__orders.mark_finished(id)
-        if marked == True:
-            print("marked as finished")
-        else:
-            print("task not found")
-            
+        try:
+            id = int(input("id: "))
+            marked = self.__orders.mark_finished(id)
+            if marked == True:
+                print("marked as finished")
+            else:
+                self.erroneous_input()
+        except ValueError:
+            self.erroneous_input()
+
     def list_programmers(self):
         programmers = self.__orders.programmers()
         for programmer in programmers:
             print(programmer)
     
     def get_status(self):
-        programmer = input("programmer: ")
-        status = self.__orders.status_of_programmer(programmer)
-        print(f"tasks: finished {status[0]} not finished {status[1]}, hours: done {status[2]} scheduled {status[3]}")
-    
+        try:
+            programmer = input("programmer: ")
+            status = self.__orders.status_of_programmer(programmer)
+            print(f"tasks: finished {status[0]} not finished {status[1]}, hours: done {status[2]} scheduled {status[3]}")
+        except ValueError:
+            self.erroneous_input()
+            
     def execute(self):
-        self.help()
         while True:
             print("")
             command = input("command: ")
@@ -167,8 +178,13 @@ class OrderBookApplication:
                 self.get_status()
             else:
                 self.help()
+    
+    def erroneous_input(self):
+        print("erroneous input")
+        # self.execute()
 
 application = OrderBookApplication()
+application.help()
 application.execute()
 
 
