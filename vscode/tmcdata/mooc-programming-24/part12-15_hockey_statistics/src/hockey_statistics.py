@@ -6,8 +6,9 @@ def get_file():
     file_name = input("Please enter the name of the file: ")
     with open(file_name) as file:
         data = file.read()
-    
+
     stats = json.loads(data)
+    file.close()
     print(f"read the data of {len(stats)} players")
     # print(f"Stats: {stats}")
     # for entry in stats:
@@ -25,7 +26,7 @@ class PlayerStat:
             try:
                 if player["name"] == name:
                     points = player["assists"] + player["goals"]
-                    return f"{player["name"]:20} {player["team"]:3} {player["goals"]:3} + {player["assists"]:1} = {points}"
+                    return f"{player["name"]:20} {player["team"]:>3} {player["goals"]:3} + {player["assists"]:>2} =  {points:>2}"
             except:
                 raise ValueError()
     
@@ -50,22 +51,45 @@ class PlayerStat:
             return players
 
     def most_points(self):
-        max_points = 0
-        max_player = ""
-        for entry in self.__stats:
-            if (entry["assists"] + entry["goals"]) >= max_points:
-                max_points = entry["assists"] + entry["goals"]
-                max_player = entry
-        return max_player
+        return self.__stats
 
     def most_goals(self):
-        max_goals = 0
-        max_player = ""
-        for entry in self.__stats:
-            if entry["goals"] >= max_goals:
-                max_goals = entry["goals"]
-                max_player = entry
-        return max_player
+        return self.__stats
+
+def order_by_games(item: list):
+    return item["games"]
+
+def order_by_points(item: list):
+    players = {}
+    final_list = []
+    for player in item:
+        points = player["assists"] + player["goals"]
+        if points not in players:
+            players[points] = []
+            players[points].append(player)
+        else:
+            players[points].append(player) 
+    for point, persons in players.items():
+        point_list = sorted(persons, key=order_by_goals)
+        for entry in point_list:
+            final_list.append(entry)
+    return final_list
+
+def order_by_goals(item: list):
+    players = {}
+    final_list = []
+    for player in item:
+        goals = item["goals"]
+        if goals not in players:
+            players[goals] = []
+            players[goals].append(player)
+        else:
+            players[goals].append(player) 
+    for goal, persons in players.items():
+        goal_list = sorted(persons, key=order_by_games)
+        for entry in goal_list:
+            final_list.append(entry)
+    return final_list
 
 class PlayerStatApplication:
     def __init__(self):
@@ -104,33 +128,43 @@ class PlayerStatApplication:
     def get_team_players(self):
         team = input("Team abbreviation: ")
         try:
-            team_players = sorted(self.__stats.team_players(team))
+            team_players = sorted(self.__stats.team_players(team), key = order_by_points, reverse = True)
             for player in team_players:
-                print(player)
+                print(self.__stats.get_player(player["name"].strip()))
         except ValueError:
             self.erroneous_input()
 
     def get_country_players(self):
         country = input("Country abbreviation: ")
         try:
-            country_players = sorted(self.__stats.country_players(country))
+            country_players = sorted(self.__stats.country_players(country), key = order_by_points, reverse = True)
             for player in country_players:
-                print(player)
+                print(self.__stats.get_player(player["name"].strip()))
         except ValueError:
             self.erroneous_input()
 
     def most_points(self):
-        player = self.__stats.most_points()
-        print(player)
+        how_many = int(input("how many: "))
+        players = sorted(self.__stats.most_points(), key = order_by_points, reverse = True)
+        count = 0
+        while count < how_many:
+            player = players[count]
+            print(self.__stats.get_player(player["name"].strip()))
+            count += 1
 
     def most_goals(self):
-        player = self.__stats.most_goals()
-        print(player)
+        how_many = int(input("how many: "))
+        players = sorted(self.__stats.most_goals(), key = order_by_goals, reverse = True)
+        count = 0
+        while count < how_many:
+            player = players[count]
+            print(self.__stats.get_player(player["name"].strip()))
+            count += 1
 
     def execute(self):
         while True:
             print("")
-            command = input("command:")
+            command = input("command: ")
             if command == "0":
                 break
             elif command == "1":
