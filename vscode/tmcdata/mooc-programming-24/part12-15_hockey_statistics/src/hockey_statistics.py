@@ -26,7 +26,7 @@ class PlayerStat:
             try:
                 if player["name"] == name:
                     points = player["assists"] + player["goals"]
-                    return f"{player["name"]:20} {player["team"]:>3} {player["goals"]:3} + {player["assists"]:>2} =  {points:>2}"
+                    return f"{player["name"]:20} {player["team"]:>3} {player["goals"]:3} + {player["assists"]:>2} = {points:>3}"
             except:
                 raise ValueError()
     
@@ -60,36 +60,10 @@ def order_by_games(item: list):
     return item["games"]
 
 def order_by_points(item: list):
-    players = {}
-    final_list = []
-    for player in item:
-        points = player["assists"] + player["goals"]
-        if points not in players:
-            players[points] = []
-            players[points].append(player)
-        else:
-            players[points].append(player) 
-    for point, persons in players.items():
-        point_list = sorted(persons, key=order_by_goals)
-        for entry in point_list:
-            final_list.append(entry)
-    return final_list
-
+    return item["assists"] + item["goals"]
+    
 def order_by_goals(item: list):
-    players = {}
-    final_list = []
-    for player in item:
-        goals = item["goals"]
-        if goals not in players:
-            players[goals] = []
-            players[goals].append(player)
-        else:
-            players[goals].append(player) 
-    for goal, persons in players.items():
-        goal_list = sorted(persons, key=order_by_games)
-        for entry in goal_list:
-            final_list.append(entry)
-    return final_list
+    return item["goals"]
 
 class PlayerStatApplication:
     def __init__(self):
@@ -146,18 +120,44 @@ class PlayerStatApplication:
     def most_points(self):
         how_many = int(input("how many: "))
         players = sorted(self.__stats.most_points(), key = order_by_points, reverse = True)
+        sorted_players = {}
+        final_list = []
+        for player in players:
+            points = player["assists"] + player["goals"]
+            if points not in sorted_players:
+                sorted_players[points] = []
+                sorted_players[points].append(player)
+            else:
+                sorted_players[points].append(player)
+        for points, persons in sorted_players.items():
+            points_list = sorted(persons, key=order_by_games, reverse=True)
+            for entry in points_list:
+                final_list.append(entry)
         count = 0
         while count < how_many:
-            player = players[count]
+            player = final_list[count]
             print(self.__stats.get_player(player["name"].strip()))
             count += 1
 
     def most_goals(self):
         how_many = int(input("how many: "))
         players = sorted(self.__stats.most_goals(), key = order_by_goals, reverse = True)
+        sorted_players = {}
+        final_list = []
+        for player in players:
+            goals = player["goals"]
+            if goals not in sorted_players:
+                sorted_players[goals] = []
+                sorted_players[goals].append(player)
+            else:
+                sorted_players[goals].append(player) 
+        for goal, persons in sorted_players.items():
+            goal_list = sorted(persons, key=order_by_games, reverse = False)
+            for entry in goal_list:
+                final_list.append(entry)
         count = 0
         while count < how_many:
-            player = players[count]
+            player = final_list[count]
             print(self.__stats.get_player(player["name"].strip()))
             count += 1
 
